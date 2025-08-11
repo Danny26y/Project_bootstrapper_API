@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException, Header, Depends, Request, Background
 from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel, Field
 from typing import Optional, List
+from fastapi.responses import HTMLResponse
 import os
 
 from db import init_pool
