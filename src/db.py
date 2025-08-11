@@ -7,11 +7,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MYSQL_HOST = os.getenv('MYSQL_HOST', '127.0.0.1')
+MYSQL_HOST = os.getenv('MYSQL_HOST', 'mysql.railway.internal')
 MYSQL_PORT = int(os.getenv('MYSQL_PORT', '3306'))
 MYSQL_USER = os.getenv('MYSQL_USER', 'root')
-MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD', '')
-MYSQL_DB = os.getenv('MYSQL_DB', 'bootstrapper')
+MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD', 'BbVIcArOMINDXbUyuEkhrflgFDtvzwve')
+MYSQLDATABASE = os.getenv('MYSQLDATABASE', 'bootstrapper')
 POOL_MIN = int(os.getenv('POOL_MIN_CONN', '1'))
 POOL_MAX = int(os.getenv('POOL_MAX_CONN', '5'))
 
