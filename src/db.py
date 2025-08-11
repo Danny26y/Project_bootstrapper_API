@@ -24,7 +24,7 @@ def _create_connection():
                            port=MYSQL_PORT,
                            user=MYSQL_USER,
                            password=MYSQL_PASSWORD,
-                           db=MYSQL_DB,
+                           db=MYSQLDATABASE,
                            charset='utf8mb4',
                            cursorclass=pymysql.cursors.DictCursor,
                            autocommit=False)
