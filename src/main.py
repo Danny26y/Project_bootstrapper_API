@@ -48,9 +48,67 @@ class CreateRequest(BaseModel):
 
 
 # ---- dependencies ----
-@app.get("/")
-def read_root():
-    return {"message": "Project Bootstrapper API is running"}
+@app.get("/", response_class=HTMLResponse)
+def home():
+    return """
+    <html>
+    <head>
+        <title>Project Bootstrapper API — Quickstart</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+            code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+            pre { background-color: #f4f4f4; padding: 10px; border-radius: 6px; overflow-x: auto; }
+            h1, h2 { color: #333; }
+        </style>
+    </head>
+    <body>
+        <h1>🚀 Project Bootstrapper API — Quickstart</h1>
+        <p>Welcome! Follow these steps to get started with the free tier.</p>
+
+        <h2>1️⃣ Register & Get API Key</h2>
+        <pre>
+POST https://projectbootstrapperapi-production.up.railway.app/users
+Content-Type: application/json
+
+{
+    "username": "yourname",
+    "email": "you@example.com"
+}
+        </pre>
+        <p>The response will include your <code>api_key</code> — save it.</p>
+
+        <h2>2️⃣ List Templates</h2>
+        <pre>
+GET https://projectbootstrapperapi-production.up.railway.app/templates
+Headers:
+X-API-Key: YOUR_API_KEY
+        </pre>
+
+        <h2>3️⃣ Create & Download a Project</h2>
+        <pre>
+POST https://projectbootstrapperapi-production.up.railway.app/create-and-download
+Headers:
+X-API-Key: YOUR_API_KEY
+Content-Type: application/json
+
+{
+    "name": "myproject",
+    "template": "flask"
+}
+        </pre>
+        <p>This will download <code>myproject.zip</code> with your generated project.</p>
+
+        <h2>ℹ️ Free Tier Limits</h2>
+        <ul>
+            <li>10 API calls/day</li>
+            <li>5 projects/month</li>
+            <li>Templates: flask, fastapi, basic-python</li>
+        </ul>
+
+        <p>📚 For full docs, visit <a href="/docs">Swagger UI</a>.</p>
+    </body>
+    </html>
+    """
 
 def require_api_key(x_api_key: Optional[str] = Header(None)):
     if not x_api_key:
